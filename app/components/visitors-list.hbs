@@ -28,15 +28,11 @@
           <tr>
             <td class="visitor-name align-baseline font-mono">{{visitor.name}}</td>
             <td class="visitor-notes align-baseline font-mono">{{visitor.notes}}</td>
-            <td class="visitor-sign-out align-baseline font-mono">
-                {{#if visitor.sign_out}}
-                  {{visitor.sign_out}}
-                {{else}}
-                <SignOutButton
-                  @entry = {{visitor}}
-                  @class="btn btn-primary"
-                />
-                {{/if}}
+            <td class="align-baseline font-mono">
+              <SignOutButton
+                @entry = {{visitor}}
+                @class="btn btn-primary"
+              />
               </td>
           </tr>
           {{/each}}
