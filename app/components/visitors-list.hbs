@@ -26,9 +26,9 @@
         <tbody>
           {{#each this.visitors as |visitor|}}
           <tr>
-            <td class="align-baseline font-mono">{{visitor.name}}</td>
-            <td class="align-baseline font-mono">{{visitor.notes}}</td>
-            <td class="align-baseline font-mono">
+            <td class="visitor-name align-baseline font-mono">{{visitor.name}}</td>
+            <td class="visitor-notes align-baseline font-mono">{{visitor.notes}}</td>
+            <td class="visitor-sign-out align-baseline font-mono">
                 {{#if visitor.sign_out}}
                   {{visitor.sign_out}}
                 {{else}}
