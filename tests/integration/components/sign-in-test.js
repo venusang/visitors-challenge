@@ -1,26 +1,27 @@
 // import { module, test } from "qunit";
 // import { setupRenderingTest } from "ember-qunit";
-// import { render } from "@ember/test-helpers";
+// import { render, click, fillIn } from "@ember/test-helpers";
 // import { hbs } from "ember-cli-htmlbars";
 //
 // module("Integration | Component | sign-in", function(hooks) {
 //   setupRenderingTest(hooks);
 //
 //   test("it renders", async function(assert) {
-//     // Set any properties with this.set('myProperty', 'value');
-//     // Handle any actions with this.set('myAction', function(val) { ... });
-//
 //     await render(hbs`<SignIn />`);
+//     await fillIn("input#firstname", "Joe");
+//     await fillIn("input#lastname", "Smith");
+//     await fillIn("input#notes", "I like turtles");
+//     await click(".save-btn");
 //
-//     assert.equal(this.element.textContent.trim(), "");
-//
-//     // Template block usage:
-//     await render(hbs`
-//       <SignIn>
-//         template block text
-//       </SignIn>
-//     `);
-//
-//     assert.equal(this.element.textContent.trim(), "template block text");
+//     await render(hbs`<VisitorsList />`);
+//     this.setProperties({
+//       mockVisitor: [
+//         {
+//           name: "Joe Smith",
+//           notes: "I like turtles",
+//           sign_out: null
+//         }
+//       ]
+//     });
 //   });
 // });
