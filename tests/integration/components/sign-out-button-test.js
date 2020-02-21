@@ -18,15 +18,11 @@ module("Integration | Component | sign-out-button", function(hooks) {
       ]
     });
 
-    // Template block usage:
-    // await render(hbs`
-    //   <VisitorsList @model={{this.mockVisitor}} />
-    // `);
     await render(hbs`
       <SignOutButton @entry={{this.mockVisitor}} />
     `);
-    await click(".sign-out-btn");
-    //line 30 is failing - probably has to do with concurrency
-    assert.dom(".visitor-sign-out").exists();
+    await click(".btn-primary");
+    let updatedStatus = this.mockVisitor.sign_out;
+    assert.dom("label").hasText(updatedStatus);
   });
 });

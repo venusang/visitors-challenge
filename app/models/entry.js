@@ -4,7 +4,6 @@ export default class EntryModel extends Model {
   @attr name;
   @attr notes;
   @attr sign_out;
-  @attr isIdle;
   get firstName() {
     return `firstName`;
   }

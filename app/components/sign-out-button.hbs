@@ -1,12 +1,9 @@
-{{#if @entry.sign_out}}
-  <span class="visitor-sign-out">{{@entry.sign_out}}</span>
-{{else}}
-<button aria-pressed="true" class="sign-out-btn btn btn-primary" type="button" {{on "click" (fn this.signOut @entry)}}>
+<label class="sr-only" for="signout">{{this.updatedStatus}}</label>
+<button aria-pressed="true" class="btn btn-primary" type="button" {{on "click" (fn this.signOut @entry)}}>
   {{#if signOutTask.isIdle}}
-  Sign out
+    Sign out
   {{else}}
     signing out...
     <img width="20" src="/{{@rootURL}}assets/images/spinner.gif" alt="Signing Out..." />
   {{/if}}
 </button>
-{{/if}}

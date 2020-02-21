@@ -30,7 +30,6 @@ module("Integration | Component | visitors-list", function(hooks) {
 
     assert.dom(".visitor-name").hasText("Captain Crunch");
     assert.dom(".visitor-notes").hasText("I like sailing and fishing");
-    assert.dom(".visitor-notes").hasText("I like sailing and fishing");
     assert.dom(".visitor-sign-out").hasText("laterzz");
   });
 });

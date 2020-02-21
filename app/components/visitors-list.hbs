@@ -26,14 +26,12 @@
         <tbody>
           {{#each this.visitors as |visitor|}}
           <tr>
-            <td class="visitor-name align-baseline font-mono">{{visitor.name}}</td>
-            <td class="visitor-notes align-baseline font-mono">{{visitor.notes}}</td>
-            <td class="align-baseline font-mono">
-              <SignOutButton
-                @entry = {{visitor}}
-                @class="btn btn-primary"
-              />
-              </td>
+            <td class="align-baseline font-mono"><span class="visitor-name">{{visitor.name}}</span></td>
+            <td class="align-baseline font-mono"><span class="visitor-notes">{{visitor.notes}}</span></td>
+            <td class="align-baseline font-mono"><span class="visitor-sign-out">{{visitor.sign_out}}</span>
+              {{#unless visitor.sign_out}}
+                <SignOutButton @entry = {{visitor}} />{{/unless}}
+            </td>
           </tr>
           {{/each}}
         </tbody>

@@ -6,6 +6,7 @@ export default class VisitorsListComponent extends Component {
   @tracked searchText;
   @tracked filteredVisitors;
   @tracked result;
+
   get visitors() {
     return !this.filteredVisitors ? this.args.model : this.filteredVisitors;
   }
