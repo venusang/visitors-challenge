@@ -1,0 +1,117 @@
+@import "colors";
+@import "table";
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-65 {
+  opacity: 0.65;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+.custom-file-control,
+.form-control,
+.is-focused .custom-file-control,
+.is-focused .form-control {
+  background-image: linear-gradient(
+      0deg,
+      $color-brand 2px,
+      rgba(63, 81, 181, 0) 0
+    ),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.26) 1px, transparent 0);
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.new-visitor-form {
+  padding: 1rem;
+  border: 0.0625rem solid $color-grayLight;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $color-grayLight;
+  opacity: 1; /* Firefox */
+}
+
+.visitor-search {
+  justify-content: space-around;
+  flex-grow: 1;
+  input[type="text"] {
+    border: 0.0625rem solid $color-grayLighter;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 50%;
+  }
+  margin: 1rem 0 1rem 0;
+}
+
+.new-visitor {
+  justify-content: space-evenly;
+  .inputs {
+    flex-grow: 5;
+    align-self: flex-end;
+  }
+
+  .buttons {
+    flex-grow: 1;
+  }
+
+  input[type="text"] {
+    border: none;
+    border-bottom: 0.0625rem solid $color-grayLighter;
+    margin: 0 1rem;
+    font-size: 1rem;
+    flex-grow: 1;
+  }
+}
+
+.font-mono {
+  font-family: "Inconsolata", monospace;
+}
+
+.logo {
+  margin: 0 auto;
+  display: flex;
+}
+
+.sign-in {
+  margin-left: 1rem;
+  &-intro {
+    margin: 1rem;
+  }
+}
+
+.table thead th {
+  &.th-name {
+    width: 30%;
+  }
+  &.th-signed-out {
+    width: 35%;
+  }
+}
+
+.btn--brand {
+  background: $color-brand;
+  color: $color-white;
+}

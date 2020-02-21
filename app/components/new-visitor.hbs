@@ -1,0 +1,27 @@
+<form class="new-visitor-form">
+    <div class="sign-in-intro d-flex align-items-center justify-content-center">
+      <Logo @src="/{{@rootURL}}assets/images/logo-small-red.svg" @alt="Envoy Brand" @class="img-fluid" />
+      <h4 class="sign-in">Please Sign-In!</h4>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="inlineFormInput">Firstname</label>
+      <Input @type="text" @class="form-control mb-2" @placeholder="First" @id="firstname" @value={{this.firstName}} />
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="inlineFormInputGroup">Lastname</label>
+      <Input @type="text" @class="form-control mb-2" @placeholder="Last" @id="lastname" @value={{this.lastName}} />
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="inlineFormInputGroup">Notes</label>
+      <Input @type="text" @class="form-control mb-2" @placeholder="Notes" @id="notes" @value={{this.notes}} />
+    </div>
+
+    <div class="form-group">
+      <fieldset disabled={{this.disabled}}>
+        <button type="button" class="btn btn--brand mb-2"  {{on "click" this.addNewVisitor}}>{{fa-icon "user"}} New Visitor</button>
+        <button type="button" class="btn btn-link mb-2" disabled={{this.disabled}} {{on "click" this.clearVisitorForm}}>Cancel</button>
+      </fieldset>
+    </div>
+  </form>

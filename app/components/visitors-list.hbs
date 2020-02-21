@@ -1,0 +1,46 @@
+<div class="d-flex flex-row justify-content-end">
+  <div class="col-3">
+    <label class="sr-only" for="inlineFormInput">Search</label>
+    <Input
+      @type="text"
+      @class="form-control mb-2"
+      @placeholder="Search"
+      @value={{this.searchText}}
+      @keyUp={{this.searchVisitors}}
+    />
+  </div>
+</div>
+  <div class="row">
+    <div class="col-4">
+      <NewVisitor />
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="th-name">Name</th>
+            <th scope="col">Notes</th>
+            <th scope="col" class="th-signed-out">Signed out</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.visitors as |visitor|}}
+          <tr>
+            <td class="align-baseline font-mono">{{visitor.name}}</td>
+            <td class="align-baseline font-mono">{{visitor.notes}}</td>
+            <td class="align-baseline font-mono">
+                {{#if visitor.sign_out}}
+                  {{visitor.sign_out}}
+                {{else}}
+                <SignOutButton
+                  @entry = {{visitor}}
+                  @class="btn btn-primary"
+                />
+                {{/if}}
+              </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
