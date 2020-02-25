@@ -1,5 +1,5 @@
 <label class="sr-only" for="signout">{{this.updatedStatus}}</label>
-<button aria-pressed="true" class="btn btn-primary" type="button" {{on "click" (fn this.signOut @entry)}}>
+<button aria-pressed="true" class="sign-out-btn btn btn-primary" type="button" {{on "click" (fn this.signOut @entry)}}>
   {{#if signOutTask.isIdle}}
     Sign out
   {{else}}

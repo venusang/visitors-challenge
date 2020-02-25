@@ -25,10 +25,10 @@
         </thead>
         <tbody>
           {{#each this.visitors as |visitor|}}
-          <tr>
-            <td class="align-baseline font-mono"><span class="visitor-name">{{visitor.name}}</span></td>
-            <td class="align-baseline font-mono"><span class="visitor-notes">{{visitor.notes}}</span></td>
-            <td class="align-baseline font-mono"><span class="visitor-sign-out">{{visitor.sign_out}}</span>
+          <tr data-test-id='entry-row'>
+            <td class="align-baseline font-mono"><span data-test-id='visitor-name' class="visitor-name">{{visitor.name}}</span></td>
+            <td class="align-baseline font-mono"><span data-test-id='visitor-notes' class="visitor-notes">{{visitor.notes}}</span></td>
+            <td class="align-baseline font-mono"><span data-test-id='visitor-sign-out' class="visitor-sign-out">{{visitor.sign_out}}</span>
               {{#unless visitor.sign_out}}
                 <SignOutButton @entry = {{visitor}} />{{/unless}}
             </td>
