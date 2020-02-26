@@ -51,7 +51,7 @@ module("Acceptance | visitors-challenge", function(hooks) {
     await setUpServer(this.server);
     await click(".sign-out-btn");
     let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
-    assert.dom(".visitor-sign-out").hasText(signOutText.innerHTML);
+    assert.notPropEqual(signOutText.innerHTML, "");
   });
 
   test("Search: The user can search the current visitors list and the list will only show visitors who are not signed out", async function(assert) {
@@ -65,7 +65,7 @@ module("Acceptance | visitors-challenge", function(hooks) {
     let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
     allEntries.forEach(() => {
       assert.dom("[data-test-id='entry-row']").exists({ count: 1 });
-      assert.dom(signOutText).hasText(signOutText.innerHTML);
+      assert.notPropEqual(signOutText.innerHTML, "");
     });
   });
 });
