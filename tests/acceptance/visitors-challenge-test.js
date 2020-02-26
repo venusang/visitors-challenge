@@ -1,7 +1,7 @@
 import {
   click,
-  fillIn,
   visit,
+  fillIn,
   findAll,
   triggerKeyEvent
 } from "@ember/test-helpers";
@@ -18,13 +18,13 @@ module("Acceptance | visitors-challenge", function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  test("View All Entries: I can view all visitors who have been signed-in", async function(assert) {
+  test("Listing visitors: I can view all visitors who have been signed-in", async function(assert) {
     setUpServer(this.server);
     await visit("/");
     assert.dom("[data-test-id='entry-row']").exists({ count: 3 });
   });
 
-  test("Sign-In: The user can add a new visitor to the current visitors list", async function(assert) {
+  test("Add a new visitor: As a Cool Chip Employee that is viewing the visitors list, when I click `Add a New Visitor` and I provide the first name, last name and notes about the visitor, and I choose to save, Then I see the new visitor added to the list of all visitors that is not signed out.", async function(assert) {
     setUpServer(this.server);
     await visit("/");
     await fillIn("input#firstname", "Joe");
@@ -47,6 +47,15 @@ module("Acceptance | visitors-challenge", function(hooks) {
       ""
     );
   });
+
+  test("Signing out visitors: As a Cool Chip employee that is viewing the visitors list, when I click the Sign Out button for a specific visitor, then the visitor is marked as signed out", async function(assert) {
+    setUpServer(this.server);
+    await visit("/");
+    await click(".sign-out-btn");
+    let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
+    assert.dom(".visitor-sign-out").hasText(signOutText.innerHTML);
+  });
+
   test("Search: The user can search the current visitors list and the list will only show visitors who are not signed out", async function(assert) {
     setUpServer(this.server);
     await visit("/");
@@ -58,8 +67,8 @@ module("Acceptance | visitors-challenge", function(hooks) {
     let allEntries = findAll("[data-test-id='entry-row']");
     let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
     allEntries.forEach(() => {
-      assert.dom("[data-test-id='entry-row']").exists();
-      assert.dom(signOutText).hasText(signOutText.innerText);
+      assert.dom("[data-test-id='entry-row']").exists({ count: 1 });
+      assert.dom(signOutText).hasText(signOutText.innerHTML);
     });
   });
 });
