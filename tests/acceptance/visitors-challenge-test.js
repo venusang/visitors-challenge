@@ -10,18 +10,22 @@ import { setupMirage } from "ember-cli-mirage/test-support";
 
 import { module, test } from "qunit";
 
+function setUpServer(server) {
+  server.createList("entry", 3);
+}
+
 module("Acceptance | visitors-challenge", function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
   test("View All Entries: I can view all visitors who have been signed-in", async function(assert) {
-    this.server.createList("entry", 10);
+    setUpServer(this.server);
     await visit("/");
-    assert.dom("[data-test-id='entry-row']").exists({ count: 10 });
+    assert.dom("[data-test-id='entry-row']").exists({ count: 3 });
   });
 
   test("Sign-In: The user can add a new visitor to the current visitors list", async function(assert) {
-    this.server.createList("entry", 2);
+    setUpServer(this.server);
     await visit("/");
     await fillIn("input#firstname", "Joe");
     await fillIn("input#lastname", "Coffee");
@@ -44,7 +48,7 @@ module("Acceptance | visitors-challenge", function(hooks) {
     );
   });
   test("Search: The user can search the current visitors list and the list will only show visitors who are not signed out", async function(assert) {
-    this.server.createList("entry", 3);
+    setUpServer(this.server);
     await visit("/");
     await click(".sign-out-btn");
 
