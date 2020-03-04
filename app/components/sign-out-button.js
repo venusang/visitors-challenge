@@ -1,23 +1,29 @@
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
 import { task, timeout } from "ember-concurrency";
-import { tracked } from "@glimmer/tracking";
+import { inject as service } from "@ember/service";
 
 export default class SignOutButtonComponent extends Component {
-  @tracked updatedStatus;
+  @service store;
 
   @(task(function*(entry) {
     let ts = new Date();
     let date = ts.toLocaleDateString();
     let time = ts.toLocaleTimeString();
+
     yield timeout(1000);
-    entry.sign_out = `${date} ${time}`;
-    this.updatedStatus = entry.sign_out;
+
+    this.store
+      .findRecord("entry", entry.id, { backgroundReload: false })
+      .then(function(entry) {
+        entry.sign_out = `${date} ${time}`;
+        entry.save();
+      });
   }).drop())
   signOutTask;
 
   @action
-  signOut(entry) {
+  async signOut(entry) {
     this.signOutTask.perform(entry);
   }
 }

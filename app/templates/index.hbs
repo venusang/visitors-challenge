@@ -1,1 +1,16 @@
-<VisitorsList @model={{@model}} />
+<div class="d-flex flex-row justify-content-end">
+  <div class="col-3">
+    <Search
+      @searchVisitors={{this.searchVisitors}}
+      @searchText={{this.searchText}}
+    />
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <SignIn />
+  </div>
+  <div class="col-8">
+    <Table @visitors={{this.visitors}} />
+  </div>
+</div>

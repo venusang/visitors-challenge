@@ -4,4 +4,6 @@ export default function() {
   this.get("/entries", schema => {
     return schema.entries.all();
   });
+  this.post("/entries");
+  this.patch("/entries/:id");
 }

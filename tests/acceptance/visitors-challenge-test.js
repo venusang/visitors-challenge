@@ -24,6 +24,13 @@ module("Acceptance | visitors-challenge", function(hooks) {
     assert.dom("[data-test-id='entry-row']").exists({ count: 3 });
   });
 
+  test("Signing out visitors: As a Cool Chip employee that is viewing the visitors list, when I click the Sign Out button for a specific visitor, then the visitor is marked as signed out", async function(assert) {
+    await setUpServer(this.server);
+    await click(".sign-out-btn");
+    let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
+    assert.notPropEqual(signOutText.innerHTML, "");
+  });
+
   test("Add a new visitor: As a Cool Chip Employee that is viewing the visitors list, when I click `Add a New Visitor` and I provide the first name, last name and notes about the visitor, and I choose to save, Then I see the new visitor added to the list of all visitors that is not signed out.", async function(assert) {
     await setUpServer(this.server);
     await fillIn("input#firstname", "Joe");
@@ -47,14 +54,7 @@ module("Acceptance | visitors-challenge", function(hooks) {
     );
   });
 
-  test("Signing out visitors: As a Cool Chip employee that is viewing the visitors list, when I click the Sign Out button for a specific visitor, then the visitor is marked as signed out", async function(assert) {
-    await setUpServer(this.server);
-    await click(".sign-out-btn");
-    let signOutText = findAll("[data-test-id='visitor-sign-out']")[0];
-    assert.notPropEqual(signOutText.innerHTML, "");
-  });
-
-  test("Search: The user can search the current visitors list and the list will only show visitors who are not signed out", async function(assert) {
+  test("Search visitors: The user can search the current visitors list and the list will only show visitors who are not signed out", async function(assert) {
     await setUpServer(this.server);
     await click(".sign-out-btn");
 

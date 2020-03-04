@@ -22,14 +22,12 @@ export default class SignInComponent extends Component {
 
   @action
   addNewVisitor() {
-    // let visitor =
-    this.store.createRecord("entry", {
+    let visitor = this.store.createRecord("entry", {
       name: this.name,
       notes: this.notes,
       sign_out: ""
     });
-
-    //visitor.save();
+    visitor.save();
     this.clearVisitorForm();
   }
 

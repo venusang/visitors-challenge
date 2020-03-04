@@ -1,0 +1,21 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" class="th-name">Name</th>
+      <th scope="col">Notes</th>
+      <th scope="col" class="th-signed-out">Signed out</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @visitors as |visitor|}}
+    <tr data-test-id='entry-row'>
+      <td class="align-baseline font-mono"><span data-test-id='visitor-name' class="visitor-name">{{visitor.name}}</span></td>
+      <td class="align-baseline font-mono"><span data-test-id='visitor-notes' class="visitor-notes">{{visitor.notes}}</span></td>
+      <td class="align-baseline font-mono"><span data-test-id='visitor-sign-out' class="visitor-sign-out">{{visitor.sign_out}}</span>
+        {{#unless visitor.sign_out}}
+          <SignOutButton @entry = {{visitor}} />{{/unless}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
